@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MAX ANIME DUB</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <h1> MAX ANIME DUB</h1>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Genres</a>
+      <div class="dropdown">
+        <button class="dropbtn">Languages</button>
+        <div class="dropdown-content">
+          <a href="#">English</a>
+          <a href="#">Japanese</a>
+          <a href="#">Spanish</a>
+          <a href="#">French</a>
+          <a href="#">German</a>
+          <a href="#">Portuguese</a>
+          <a href="#">Russian</a>
+          <a href="#">Korean</a>
+          <a href="#">Chinese</a>
+          <a href="#">Italian</a>
+        </div>
+      </div>
+      <a href="#">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="anime-list">
+      <h2>Stream Anime in All Languages</h2>
+      <div class="anime-grid">
+        <!-- Anime cards will go here -->
+        <div class="anime-card">
+          <img src="https://via.placeholder.com/200x300" alt="Naruto" />
+          <h3>Naruto Dub</h3>
+          <button onclick="playAnime('Naruto Dub')">Watch Now</button>
+        </div>
+        <div class="anime-card">
+          <img src="https://via.placeholder.com/200x300" alt="One Piece" />
+          <h3>One Piece Dub</h3>
+          <button onclick="playAnime('One Piece Dub')">Watch Now</button>
+        </div>
+        <div class="anime-card">
+          <img src="https://via.placeholder.com/200x300" alt="Dragon Ball Z" />
+          <h3>Dragon Ball Z Dub</h3>
+          <button onclick="playAnime('Dragon Ball Z Dub')">Watch Now</button>
+        </div>
+        <div class="anime-card">
+          <img src="https://via.placeholder.com/200x300" alt="Attack on Titan" />
+          <h3>Attack on Titan Dub</h3>
+          <button onclick="playAnime('Attack on Titan Dub')">Watch Now</button>
+        </div>
+        <div class="anime-card">
+          <img src="https://via.placeholder.com/200x300" alt="My Hero Academia" />
+          <h3>My Hero Academia Dub</h3>
+          <button onclick="playAnime('My Hero Academia Dub')">Watch Now</button>
+        </div>
+        <div class="anime-card">
+          <img src="https://via.placeholder.com/200x300" alt="Demon Slayer" />
+          <h3>Demon Slayer Dub</h3>
+          <button onclick="playAnime('Demon Slayer Dub')">Watch Now</button>
+        </div>
+        <div class="anime-card">
+          <img src="https://via.placeholder.com/200x300" alt="Bleach" />
+          <h3>Bleach Dub</h3>
+          <button onclick="playAnime('Bleach Dub')">Watch Now</button>
+        </div>
+        <div class="anime-card">
+          <img src="https://via.placeholder.com/200x300" alt="Death Note" />
+          <h3>Death Note Dub</h3>
+          <button onclick="playAnime('Death Note Dub')">Watch Now</button>
+        </div>
+        <div class="anime-card">
+          <img src="https://via.placeholder.com/200x300" alt="Fullmetal Alchemist" />
+          <h3>Fullmetal Alchemist Dub</h3>
+          <button onclick="playAnime('Fullmetal Alchemist Dub')">Watch Now</button>
+        </div>
+        <div class="anime-card">
+          <img src="https://via.placeholder.com/200x300" alt="Naruto Shippuden" />
+          <h3>Naruto Shippuden Dub</h3>
+          <button onclick="playAnime('Naruto Shippuden Dub')">Watch Now</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 MAX ANIME DUB. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function playAnime(title) {
+      alert(`Streaming now: ${title}`);
+    }
+  </script>
+  <script>
+    async function fetchAnime() {
+      const response = await fetch('http://localhost:3000/anime');
+      const animeList = await response.json();
+  
+      const animeGrid = document.querySelector('.anime-grid');
+      animeGrid.innerHTML = ''; // Clear existing content
+  
+      animeList.forEach(anime => {
+        const animeCard = document.createElement('div');
+        animeCard.classList.add('anime-card');
+        animeCard.innerHTML = `
+          <img src="https://via.placeholder.com/200x300" alt="${anime.title}" />
+          <h3>${anime.title}</h3>
+          <button onclick="playAnime('${anime.title}')">Watch Now</button>
+        `;
+        animeGrid.appendChild(animeCard);
+      });
+    }
+  
+    // Fetch anime when the page loads
+    window.onload = fetchAnime;
+  
+    function playAnime(title) {
+      alert(`Streaming now: ${title}`);
+    }
+  </script>
+  
+</body>
+</html>
