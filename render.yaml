@@ -1,0 +1,8 @@
+services:
+  - type: web
+    name: max-anime-dub
+    env: node
+    branch: master
+    buildCommand: npm install
+    startCommand: npm start
+    autoDeploy: true
